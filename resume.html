@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resume | Almaaz Khan</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+.resume-wrap {
+  max-width: 1100px; margin: 0 auto; padding: 5rem 5vw;
+  display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: start;
+}
+/* LEFT SIDEBAR */
+.resume-sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 2rem; }
+.res-block { }
+.res-block-title { font-size: 0.72rem; color: var(--text3); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+
+.skill-section { margin-bottom: 1.2rem; }
+.skill-section-name { font-size: 0.8rem; color: var(--text2); font-weight: 600; margin-bottom: 0.5rem; }
+
+.edu-item { margin-bottom: 1.25rem; }
+.edu-item:last-child { margin-bottom: 0; }
+.edu-year-tag {
+  display: inline-block; background: rgba(77,159,255,0.1); border: 1px solid rgba(77,159,255,0.18);
+  color: var(--accent); font-size: 0.7rem; font-weight: 700; padding: 1px 8px; border-radius: 4px;
+  letter-spacing: 0.5px; margin-bottom: 0.4rem;
+}
+.edu-deg { font-family: var(--font-h); font-size: 0.88rem; font-weight: 700; margin-bottom: 0.15rem; }
+.edu-school { color: var(--text2); font-size: 0.8rem; line-height: 1.4; margin-bottom: 0.25rem; }
+.edu-score { font-size: 0.75rem; color: var(--text3); }
+
+.cert-mini { display: flex; align-items: center; gap: 10px; margin-bottom: 0.9rem; }
+.cert-mini:last-child { margin-bottom: 0; }
+.cert-mini-icon { width: 32px; height: 32px; background: rgba(77,159,255,0.1); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+.cert-mini-name { font-size: 0.85rem; font-weight: 500; }
+.cert-mini-by { font-size: 0.72rem; color: var(--text3); }
+
+/* RIGHT — EXPERIENCE TIMELINE */
+.resume-main { }
+.res-main-section { margin-bottom: 4rem; }
+.res-main-section:last-child { margin-bottom: 0; }
+.res-main-title { font-family: var(--font-h); font-size: 1.3rem; font-weight: 800; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.75rem; }
+.res-main-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.exp-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 1.75rem; margin-bottom: 1.25rem;
+  position: relative; overflow: hidden;
+  transition: border-color 0.22s;
+}
+.exp-card:hover { border-color: var(--border-h); }
+.exp-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); border-radius: 3px 0 0 3px; }
+.exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
+.exp-title { font-family: var(--font-h); font-size: 1.08rem; font-weight: 700; }
+.exp-date { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; background: rgba(77,159,255,0.1); padding: 3px 10px; border-radius: 4px; }
+.exp-company { color: var(--text2); font-size: 0.88rem; margin-bottom: 1rem; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.exp-bullets li { color: var(--text2); font-size: 0.9rem; padding-left: 1.2rem; position: relative; }
+.exp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 0.3rem; }
+
+/* ACHIEVEMENTS */
+.ach-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.ach-list li {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 1rem 1.25rem;
+  color: var(--text2); font-size: 0.9rem;
+  display: flex; align-items: flex-start; gap: 10px;
+  transition: border-color 0.22s;
+}
+.ach-list li:hover { border-color: var(--border-h); }
+.ach-list li::before { content: '✦'; color: var(--accent); font-size: 0.7rem; flex-shrink: 0; margin-top: 4px; }
+
+@media (max-width: 860px) {
+  .resume-wrap { grid-template-columns: 1fr; }
+  .resume-sidebar { position: static; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">AK<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<main>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-inner" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; max-width: 1100px;">
+    <div>
+      <p class="sec-label">My Background</p>
+      <h1>Resume &amp; <span>Experience</span></h1>
+      <p>A detailed look at my work history, education, skills, and certifications.</p>
+    </div>
+    <a href="Almaaz_Khan_Java_Full_Stack_Resume1.pdf" download class="btn btn-primary">Download PDF ↓</a>
+  </div>
+</div>
+
+<div class="resume-wrap">
+  <!-- SIDEBAR -->
+  <div class="resume-sidebar">
+    <div class="res-block reveal">
+      <div class="res-block-title">Technical Skills</div>
+      <div class="skill-section">
+        <div class="skill-section-name">Backend</div>
+        <div class="tags" style="gap: 5px;"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Hibernate</span><span class="tag">REST APIs</span><span class="tag">JDBC</span><span class="tag">Servlets</span><span class="tag">JSP</span></div>
+      </div>
+      <div class="skill-section">
+        <div class="skill-section-name">Frontend</div>
+        <div class="tags" style="gap: 5px;"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">React.js</span><span class="tag">Bootstrap</span></div>
+      </div>
+      <div class="skill-section">
+        <div class="skill-section-name">Database</div>
+        <div class="tags" style="gap: 5px;"><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">CRUD</span><span class="tag">DB Design</span></div>
+      </div>
+      <div class="skill-section">
+        <div class="skill-section-name">Tools</div>
+        <div class="tags" style="gap: 5px;"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag">IntelliJ</span><span class="tag">VS Code</span></div>
+      </div>
+    </div>
+
+    <div class="res-block reveal reveal-d1">
+      <div class="res-block-title">Education</div>
+      <div class="edu-item">
+        <div class="edu-year-tag">2021 – 2025</div>
+        <div class="edu-deg">B.E. Computer Engineering</div>
+        <div class="edu-school">Sinhgad Academy of Engineering, Pune</div>
+        <div class="edu-score">CGPA: 6.26 / 10</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year-tag">2019 – 2021</div>
+        <div class="edu-deg">HSC – Science</div>
+        <div class="edu-school">Shri. JES College, Jalna</div>
+        <div class="edu-score">84.67%</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year-tag">2019</div>
+        <div class="edu-deg">SSC</div>
+        <div class="edu-school">St. John's High School, Jalna</div>
+        <div class="edu-score">63.60%</div>
+      </div>
+    </div>
+
+    <div class="res-block reveal reveal-d2">
+      <div class="res-block-title">Certifications</div>
+      <div class="cert-mini"><div class="cert-mini-icon">🛡️</div><div><div class="cert-mini-name">Foundations of Cybersecurity</div><div class="cert-mini-by">Google</div></div></div>
+      <div class="cert-mini"><div class="cert-mini-icon">🐧</div><div><div class="cert-mini-name">Linux and SQL</div><div class="cert-mini-by">Google</div></div></div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="resume-main">
+    <div class="res-main-section reveal">
+      <div class="res-main-title">Professional Summary</div>
+      <p style="color: var(--text2); font-size: 0.97rem; line-height: 1.85; background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem; border-left: 3px solid var(--accent);">
+        Motivated Java Full Stack Developer with hands-on experience in building REST APIs, backend systems, and database-driven applications using Java, Spring Boot, Hibernate, MySQL, and React.js. Completed internship focused on backend development, debugging, and API testing. Strong understanding of OOP, SQL, CRUD operations, and the software development lifecycle. Seeking an entry-level Java Developer role to contribute to scalable applications and grow as a backend engineer.
+      </p>
+    </div>
+
+    <div class="res-main-section reveal">
+      <div class="res-main-title">Work Experience</div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-title">Software Development Intern</div>
+          <div class="exp-date">Dec 2025 – May 2026</div>
+        </div>
+        <div class="exp-company">VibrantMinds Technologies Pvt. Ltd. · Pune, Maharashtra</div>
+        <ul class="exp-bullets">
+          <li>Built Spring Boot backend features and integrated database-driven workflows with MySQL and REST APIs.</li>
+          <li>Supported responsive frontend pages using HTML, CSS, JavaScript, Bootstrap, and React.js basics.</li>
+          <li>Validated API behaviour with Postman, fixed UI/backend integration issues, and improved user workflow reliability.</li>
+          <li>Worked with Git/GitHub in an agile team environment to deliver and debug application features.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="res-main-section reveal">
+      <div class="res-main-title">Key Achievements</div>
+      <ul class="ach-list">
+        <li>Completed a 6-month software development internship with hands-on Java backend and full-stack exposure at VibrantMinds Technologies.</li>
+        <li>Built full-stack projects demonstrating Spring Boot, MySQL, REST APIs, responsive UI, validation, and dashboards.</li>
+        <li>Built Login-Registration-System projects using Servlet, JSP, JDBC, and MySQL to practice authentication, CRUD operations, and database integration.</li>
+        <li>Familiar with the full software development lifecycle: API design, debugging, version control, agile collaboration, and deployment readiness.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</main>
+<footer>
+  <a href="index.html" class="footer-logo">AK<span>.</span></a>
+  <p class="footer-copy">© 2026 Almaaz Khan</p>
+  <div class="footer-links">
+    <a href="https://github.com/Almaazkhan07" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/almaaz-khan-p7/" target="_blank">LinkedIn</a>
+    <a href="mailto:almaazkhan7070@gmail.com">Email</a>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
