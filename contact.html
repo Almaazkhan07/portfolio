@@ -58,7 +58,10 @@
 .form-group textarea { resize: vertical; min-height: 130px; }
 .submit-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .success-msg { display: none; color: #4ade80; font-size: 0.88rem; font-weight: 500; align-items: center; gap: 6px; }
+.error-msg { display: none; color: #f87171; font-size: 0.88rem; font-weight: 500; align-items: center; gap: 6px; }
 .success-msg.show { display: flex; }
+.error-msg.show { display: flex; }
+.btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
 
 @media (max-width: 860px) {
   .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
@@ -135,36 +138,38 @@
   </div>
 
   <!-- FORM -->
-  <div class="contact-form reveal reveal-d1">
+  <form class="contact-form reveal reveal-d1" id="contact-form" action="https://formspree.io/f/mjgjlqze" method="POST">
     <div class="form-header">Send a Message</div>
     <p class="form-sub">Fill out the form and I'll get back to you as soon as possible.</p>
+    <input type="hidden" name="_subject" value="New portfolio contact message" />
     <div class="form-row-2">
       <div class="form-group">
         <label>First Name *</label>
-        <input type="text" id="fname" placeholder="John" />
+        <input type="text" id="fname" name="first_name" placeholder="John" required />
       </div>
       <div class="form-group">
         <label>Last Name *</label>
-        <input type="text" id="lname" placeholder="Doe" />
+        <input type="text" id="lname" name="last_name" placeholder="Doe" required />
       </div>
     </div>
     <div class="form-group">
       <label>Email Address *</label>
-      <input type="email" id="email" placeholder="john@company.com" />
+      <input type="email" id="email" name="email" placeholder="john@company.com" required />
     </div>
     <div class="form-group">
       <label>Subject</label>
-      <input type="text" id="subject" placeholder="Job Opportunity / Collaboration / Project" />
+      <input type="text" id="subject" name="subject" placeholder="Job Opportunity / Collaboration / Project" />
     </div>
     <div class="form-group">
       <label>Message *</label>
-      <textarea id="message" placeholder="Tell me about the role, project, or opportunity you have in mind..."></textarea>
+      <textarea id="message" name="message" placeholder="Tell me about the role, project, or opportunity you have in mind..." required></textarea>
     </div>
     <div class="submit-row">
-      <button class="btn btn-primary" id="send-btn" onclick="sendMsg()">Send Message →</button>
+      <button class="btn btn-primary" id="send-btn" type="submit">Send Message →</button>
       <div class="success-msg" id="success-msg">✓ Message sent! I'll reply soon.</div>
+      <div class="error-msg" id="error-msg">Message failed. Please try again or email me directly.</div>
     </div>
-  </div>
+  </form>
 </div>
 </main>
 <footer>
@@ -178,19 +183,35 @@
 </footer>
 <script src="main.js"></script>
 <script>
-function sendMsg() {
-  const btn = document.getElementById('send-btn');
-  const msg = document.getElementById('success-msg');
-  btn.textContent = 'Sending…';
+const contactForm = document.getElementById('contact-form');
+const btn = document.getElementById('send-btn');
+const successMsg = document.getElementById('success-msg');
+const errorMsg = document.getElementById('error-msg');
+
+contactForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  successMsg.classList.remove('show');
+  errorMsg.classList.remove('show');
+  btn.textContent = 'Sending...';
   btn.disabled = true;
-  setTimeout(() => {
-    btn.style.display = 'none';
-    msg.classList.add('show');
-    ['fname','lname','email','subject','message'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.value = '';
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { Accept: 'application/json' }
     });
-  }, 900);
-}
+
+    if (!response.ok) throw new Error('Form submission failed');
+    contactForm.reset();
+    successMsg.classList.add('show');
+  } catch (error) {
+    errorMsg.classList.add('show');
+  } finally {
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
+  }
+});
 </script>
 </body>
 </html>
